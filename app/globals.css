@@ -614,6 +614,9 @@ select {
   display: grid;
   gap: 24px;
   align-items: stretch;
+  grid-template-areas:
+    "copy visual"
+    "metrics visual";
 }
 
 .concept-layout.editorial,
@@ -629,6 +632,15 @@ select {
 .concept-copy {
   display: grid;
   align-content: start;
+  gap: 0;
+  min-width: 0;
+  grid-area: copy;
+}
+
+.concept-copy-main {
+  display: grid;
+  align-content: start;
+  min-width: 0;
 }
 
 .concept-metrics {
@@ -636,10 +648,15 @@ select {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   margin-top: 24px;
+  min-width: 0;
+  grid-area: metrics;
 }
 
 .concept-visual {
   display: grid;
+  min-width: 0;
+  align-self: start;
+  grid-area: visual;
 }
 
 .concept-panel {
@@ -647,6 +664,9 @@ select {
   padding: 24px;
   background: var(--concept-panel);
   border: 1px solid var(--concept-line);
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .concept-photo {
@@ -944,6 +964,28 @@ select {
   }
 }
 
+@media (max-width: 920px) {
+  .concept-layout,
+  .concept-layout.editorial,
+  .concept-layout.product,
+  .concept-layout.impact,
+  .concept-layout.journey {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "copy"
+      "visual"
+      "metrics";
+  }
+
+  .concept-copy {
+    max-width: none;
+  }
+
+  .concept-visual {
+    width: 100%;
+  }
+}
+
 @media (max-width: 720px) {
   .section {
     padding: 72px 0;
@@ -961,10 +1003,11 @@ select {
   .brand-lockup {
     width: 100%;
     align-items: flex-start;
+    gap: 12px;
   }
 
   .brand-lockup img {
-    width: min(148px, 42vw);
+    width: min(132px, 38vw);
   }
 
   .brand-title strong {
@@ -979,6 +1022,17 @@ select {
   .headline {
     font-size: clamp(2.2rem, 10vw, 3.8rem);
     line-height: 0.98;
+  }
+
+  .concept-page .headline {
+    font-size: clamp(2rem, 9vw, 3rem);
+    line-height: 1.02;
+    margin-bottom: 14px;
+  }
+
+  .concept-page .subhead {
+    font-size: 1.02rem;
+    line-height: 1.6;
   }
 
   .subhead,
@@ -1015,6 +1069,14 @@ select {
     overflow: hidden;
   }
 
+  .concept-visual,
+  .journey-photo,
+  .impact-stat.full,
+  .swipe-stack {
+    width: 100%;
+    max-width: 100%;
+  }
+
   .swipe-stack {
     min-height: auto;
   }
@@ -1025,7 +1087,19 @@ select {
   }
 
   .swipe-card.active img {
-    height: 220px;
+    height: 200px;
+  }
+
+  .journey-photo,
+  .impact-stat.full,
+  .concept-photo.tall {
+    min-height: 200px;
+    max-height: 280px;
+  }
+
+  .concept-page .cta-row {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .companion-coach-theme .journey-panel::before {
@@ -1056,8 +1130,14 @@ select {
     gap: 10px;
   }
 
-  .nav-links {
+  .topbar {
     gap: 12px;
+  }
+
+  .nav-links {
+    width: 100%;
+    gap: 12px;
+    justify-content: flex-start;
   }
 
   .match-header {
@@ -1067,5 +1147,24 @@ select {
 
   .score-ring {
     max-width: 92px;
+  }
+
+  .concept-page .headline {
+    font-size: clamp(1.8rem, 11vw, 2.6rem);
+    line-height: 1.04;
+  }
+
+  .concept-tagline,
+  .route-badge,
+  .eyebrow {
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  .journey-photo,
+  .impact-stat.full,
+  .concept-photo.tall,
+  .swipe-card.active img {
+    max-height: 240px;
   }
 }

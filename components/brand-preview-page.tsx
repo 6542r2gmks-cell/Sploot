@@ -24,27 +24,29 @@ export function BrandPreviewPage({ preview }: { preview: BrandPreview }) {
           <div className="concept-copy">
             <span className="eyebrow">{preview.routeLabel}</span>
             <div className="concept-tagline">{preview.conceptTagline}</div>
-            <h1 className="headline">{preview.heroTitle}</h1>
-            <p className="subhead">{preview.heroBody}</p>
-            <p className="concept-support-line">{preview.supportLine}</p>
-            <div className="cta-row">
-              <Link className="button" href="/demo/trial">
-                {preview.cta}
-              </Link>
-              <Link className="ghost-button" href="/demo">
-                Compare all concepts
-              </Link>
+            <div className="concept-copy-main">
+              <h1 className="headline">{preview.heroTitle}</h1>
+              <p className="subhead">{preview.heroBody}</p>
+              <p className="concept-support-line">{preview.supportLine}</p>
+              <div className="cta-row">
+                <Link className="button" href="/demo/trial">
+                  {preview.cta}
+                </Link>
+                <Link className="ghost-button" href="/demo">
+                  Compare all concepts
+                </Link>
+              </div>
             </div>
-            <div className="concept-metrics">
+          </div>
+          <div className="concept-visual">{renderVisualPanel(preview)}</div>
+          <div className="concept-metrics">
               {preview.metrics.map((metric) => (
                 <div className="concept-metric" key={metric.label}>
                   <strong>{metric.label}</strong>
                   <span>{metric.detail}</span>
                 </div>
               ))}
-            </div>
           </div>
-          <div className="concept-visual">{renderVisualPanel(preview)}</div>
         </div>
       </section>
 
