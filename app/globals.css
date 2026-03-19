@@ -476,6 +476,13 @@ select {
   padding: 24px;
 }
 
+.match-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+}
+
 .match-meta,
 .chip-row {
   display: flex;
@@ -951,6 +958,86 @@ select {
     align-items: flex-start;
   }
 
+  .brand-lockup {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .brand-lockup img {
+    width: min(148px, 42vw);
+  }
+
+  .brand-title strong {
+    font-size: 1.12rem;
+  }
+
+  .brand-title span,
+  .nav-links {
+    font-size: 0.92rem;
+  }
+
+  .headline {
+    font-size: clamp(2.2rem, 10vw, 3.8rem);
+    line-height: 0.98;
+  }
+
+  .subhead,
+  .concept-support-line {
+    max-width: none;
+  }
+
+  .cta-row {
+    width: 100%;
+  }
+
+  .cta-row .button,
+  .cta-row .ghost-button,
+  .cta-row button,
+  .reaction-row .button,
+  .reaction-row .ghost-button {
+    width: 100%;
+  }
+
+  .metric strong,
+  .concept-metric strong,
+  .impact-stat strong {
+    font-size: 1.35rem;
+  }
+
+  .hero-photo,
+  .journey-photo,
+  .concept-photo.tall,
+  .impact-stat.full {
+    min-height: 220px;
+  }
+
+  .concept-panel {
+    overflow: hidden;
+  }
+
+  .swipe-stack {
+    min-height: auto;
+  }
+
+  .swipe-card.active {
+    width: 100%;
+    transform: none;
+  }
+
+  .swipe-card.active img {
+    height: 220px;
+  }
+
+  .companion-coach-theme .journey-panel::before {
+    display: none;
+  }
+
+  .journey-step,
+  .impact-stat,
+  .concept-proof-card {
+    padding: 16px;
+  }
+
   .quiz-shell,
   .hero-panel,
   .tile,
@@ -960,5 +1047,25 @@ select {
   .concept-panel,
   .concept-proof-card {
     padding: 20px;
+  }
+}
+
+@media (max-width: 560px) {
+  .brand-lockup {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-links {
+    gap: 12px;
+  }
+
+  .match-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .score-ring {
+    max-width: 92px;
   }
 }

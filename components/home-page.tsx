@@ -507,7 +507,7 @@ export function HomePage({
                   <article className="card match-card">
                     <img src={activeMatch.pet.image} alt={`${activeMatch.pet.name} profile photo`} />
                     <div className="match-content">
-                      <div style={{ display: "flex", justifyContent: "space-between", gap: 18, alignItems: "center" }}>
+                      <div className="match-header">
                         <div>
                           <span className="eyebrow">Current best-fit candidate</span>
                           <h3 className="section-title" style={{ fontSize: "2.2rem", marginBottom: 4 }}>
