@@ -1,8 +1,5 @@
-import { BrandPreviewPage } from "@/components/brand-preview-page";
-import { getBrandPreview } from "@/lib/brand-previews";
+import { redirect } from "next/navigation";
 
-export default function ModernMatchmakerPage() {
-  const preview = getBrandPreview("modern-matchmaker");
-  if (!preview) return null;
-  return <BrandPreviewPage preview={preview} />;
+export default function ModernMatchmakerRedirect() {
+  redirect("/demo/modern-matchmaker");
 }

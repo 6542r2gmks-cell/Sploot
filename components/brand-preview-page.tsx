@@ -14,8 +14,9 @@ export function BrandPreviewPage({ preview }: { preview: BrandPreview }) {
             </div>
           </div>
           <div className="nav-links">
-            <Link href="/">All concepts</Link>
-            <Link href="/trial">Trial app</Link>
+            <Link href="/">Public landing page</Link>
+            <Link href="/demo">Demo hub</Link>
+            <Link href="/demo/trial">Trial app</Link>
           </div>
         </div>
 
@@ -25,11 +26,11 @@ export function BrandPreviewPage({ preview }: { preview: BrandPreview }) {
             <h1 className="headline">{preview.heroTitle}</h1>
             <p className="subhead">{preview.heroBody}</p>
             <div className="cta-row">
-              <Link className="button" href="/trial">
-                {preview.cta}
+              <Link className="button" href="/">
+                Get beta access
               </Link>
-              <Link className="ghost-button" href="/">
-                Compare all homepage options
+              <Link className="ghost-button" href="/demo/trial">
+                View the live demo
               </Link>
             </div>
             <div className="metric-strip">
@@ -50,7 +51,7 @@ export function BrandPreviewPage({ preview }: { preview: BrandPreview }) {
                 </div>
               </div>
               <div className="stack-item">
-                <strong>Trust filter</strong>
+                <strong>Trust signal</strong>
                 <p className="muted" style={{ margin: "8px 0 0" }}>
                   {preview.trustLine}
                 </p>
@@ -75,12 +76,15 @@ export function BrandPreviewPage({ preview }: { preview: BrandPreview }) {
             </div>
             <div className="card tile">
               <h3>Demo handoff</h3>
-              <p>The homepage should hand the viewer into the trial app, not force the full product flow immediately.</p>
+              <p>This concept can still be reviewed in class, but the public root should drive beta access first and send demos into the separate namespace.</p>
             </div>
           </div>
           <div className="cta-row">
-            <Link className="button" href="/trial">
+            <Link className="button" href="/demo/trial">
               Open the trial app
+            </Link>
+            <Link className="ghost-button" href="/demo">
+              Back to demo hub
             </Link>
           </div>
         </div>

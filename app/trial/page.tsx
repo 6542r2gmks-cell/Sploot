@@ -1,5 +1,5 @@
-import { HomePage } from "@/components/home-page";
+import { redirect } from "next/navigation";
 
-export default function TrialPage() {
-  return <HomePage />;
+export default function TrialRedirect() {
+  redirect("/demo/trial");
 }

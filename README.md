@@ -13,12 +13,13 @@ Open `http://localhost:3000`.
 
 ## Demo URLs
 
-- `/` concept gallery
-- `/warm-guide`
-- `/modern-matchmaker`
-- `/outcome-first`
-- `/companion-coach`
-- `/trial` interactive Sploot app
+- `/` public landing page
+- `/demo` concept gallery
+- `/demo/warm-guide`
+- `/demo/modern-matchmaker`
+- `/demo/outcome-first`
+- `/demo/companion-coach`
+- `/demo/trial` interactive Sploot app
 
 ## Included
 

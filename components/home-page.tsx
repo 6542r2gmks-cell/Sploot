@@ -20,7 +20,7 @@ const readinessTone = {
   "not-ready-yet": { className: "not-ready", label: "Not ready yet" },
 } as const;
 
-export function HomePage() {
+export function HomePage({ mode = "demo" }: { mode?: "demo" | "full" }) {
   const [stepIndex, setStepIndex] = useState(0);
   const [quiz, setQuiz] = useState<QuizResponse>(defaultQuizResponse);
   const [assessment, setAssessment] = useState<ReadinessAssessment | null>(null);
@@ -125,10 +125,10 @@ export function HomePage() {
             </div>
           </div>
           <div className="nav-links">
-            <Link href="/">Concept gallery</Link>
+            <Link href="/">Public landing page</Link>
+            <Link href="/demo">Demo hub</Link>
             <a href="#how-it-works">How it works</a>
             <a href="#quiz">Quiz POC</a>
-            <a href="#agents">Agents</a>
             <a href="#waitlist">Early access</a>
           </div>
         </div>
@@ -144,7 +144,7 @@ export function HomePage() {
             </p>
             <div className="cta-row">
               <a className="button" href="#quiz">Start the readiness quiz</a>
-              <a className="ghost-button" href="#brand-routes">See the four brand routes</a>
+              <a className="ghost-button" href="#waitlist">Get mobile beta access</a>
             </div>
             <div className="metric-strip">
               <div className="metric">
@@ -204,21 +204,6 @@ export function HomePage() {
               <h3>3. Support the first months</h3>
               <p>Move directly into decompression, routine building, integration with kids or pets, and long-term care prompts.</p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="shell">
-          <span className="eyebrow">Research Signals</span>
-          <h2 className="section-title">The product decisions this prototype is already honoring.</h2>
-          <div className="signal-grid" style={{ marginTop: 28 }}>
-            {researchSignals.map((signal) => (
-              <div className="card tile" key={signal.title}>
-                <h4>{signal.title}</h4>
-                <p>{signal.detail}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -625,64 +610,85 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="shell">
-          <span className="eyebrow">Hybrid shelter path</span>
-          <h2 className="section-title">API first where possible, outbound or embedded where necessary.</h2>
-          <div className="partners-grid" style={{ marginTop: 28 }}>
-            <div className="card tile">
-              <h3>Primary path: normalized imports</h3>
-              <p>Ingest API-accessible adoptable dog data into Sploot&apos;s own schema for matching, fit explanations, and lifecycle tagging.</p>
-            </div>
-            <div className="card tile">
-              <h3>Secondary path: widget or outbound</h3>
-              <p>When direct access is limited, Sploot still curates the shortlist and routes to a shelter widget or profile without losing the readiness context.</p>
-            </div>
-            <div className="card tile">
-              <h3>Partner roadmap: better listings</h3>
-              <p>Later shelter tooling can improve profile photos, eye-forward card selection, and expectation-setting copy before adoption ever happens.</p>
+      {mode === "full" ? (
+        <section className="section">
+          <div className="shell">
+            <span className="eyebrow">Research Signals</span>
+            <h2 className="section-title">The product decisions this prototype is already honoring.</h2>
+            <div className="signal-grid" style={{ marginTop: 28 }}>
+              {researchSignals.map((signal) => (
+                <div className="card tile" key={signal.title}>
+                  <h4>{signal.title}</h4>
+                  <p>{signal.detail}</p>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
-      <section className="section" id="agents">
-        <div className="shell">
-          <span className="eyebrow">Internal agent setup</span>
-          <h2 className="section-title">Six operating agents now, product-facing AI later.</h2>
-          <div className="agent-grid" style={{ marginTop: 28 }}>
-            <div className="card tile">
-              <h3>Brand Management</h3>
-              <p>Owns positioning, visual consistency, taglines, and homepage voice.</p>
-            </div>
-            <div className="card tile">
-              <h3>Software & App Development</h3>
-              <p>Owns architecture, delivery sequencing, data shape, and technical quality.</p>
-            </div>
-            <div className="card tile">
-              <h3>Marketing</h3>
-              <p>Owns audience targeting, content pillars, channel testing, and conversion funnels.</p>
-            </div>
-            <div className="card tile">
-              <h3>Shelter Partnership</h3>
-              <p>Owns integration discovery, outreach, onboarding requirements, and trust narrative.</p>
-            </div>
-            <div className="card tile">
-              <h3>Quiz Pairing Optimization</h3>
-              <p>Owns readiness logic, calibration, fit explanations, and expectation-gap design.</p>
-            </div>
-            <div className="card tile">
-              <h3>Analytics</h3>
-              <p>Owns funnel instrumentation, readiness-quality reporting, and experiment readouts.</p>
+      {mode === "full" ? (
+        <section className="section">
+          <div className="shell">
+            <span className="eyebrow">Hybrid shelter path</span>
+            <h2 className="section-title">API first where possible, outbound or embedded where necessary.</h2>
+            <div className="partners-grid" style={{ marginTop: 28 }}>
+              <div className="card tile">
+                <h3>Primary path: normalized imports</h3>
+                <p>Ingest API-accessible adoptable dog data into Sploot&apos;s own schema for matching, fit explanations, and lifecycle tagging.</p>
+              </div>
+              <div className="card tile">
+                <h3>Secondary path: widget or outbound</h3>
+                <p>When direct access is limited, Sploot still curates the shortlist and routes to a shelter widget or profile without losing the readiness context.</p>
+              </div>
+              <div className="card tile">
+                <h3>Partner roadmap: better listings</h3>
+                <p>Later shelter tooling can improve profile photos, eye-forward card selection, and expectation-setting copy before adoption ever happens.</p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
+
+      {mode === "full" ? (
+        <section className="section" id="agents">
+          <div className="shell">
+            <span className="eyebrow">Internal agent setup</span>
+            <h2 className="section-title">Six operating agents now, product-facing AI later.</h2>
+            <div className="agent-grid" style={{ marginTop: 28 }}>
+              <div className="card tile">
+                <h3>Brand Management</h3>
+                <p>Owns positioning, visual consistency, taglines, and homepage voice.</p>
+              </div>
+              <div className="card tile">
+                <h3>Software & App Development</h3>
+                <p>Owns architecture, delivery sequencing, data shape, and technical quality.</p>
+              </div>
+              <div className="card tile">
+                <h3>Marketing</h3>
+                <p>Owns audience targeting, content pillars, channel testing, and conversion funnels.</p>
+              </div>
+              <div className="card tile">
+                <h3>Shelter Partnership</h3>
+                <p>Owns integration discovery, outreach, onboarding requirements, and trust narrative.</p>
+              </div>
+              <div className="card tile">
+                <h3>Quiz Pairing Optimization</h3>
+                <p>Owns readiness logic, calibration, fit explanations, and expectation-gap design.</p>
+              </div>
+              <div className="card tile">
+                <h3>Analytics</h3>
+                <p>Owns funnel instrumentation, readiness-quality reporting, and experiment readouts.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section className="section" id="waitlist">
         <div className="shell">
-          <span className="eyebrow">Early access</span>
-          <h2 className="section-title">Collect interest without pretending the backend is finished.</h2>
+          <span className="eyebrow">Get the app</span>
+          <h2 className="section-title">Join the mobile beta while the trial app proves the flow.</h2>
           <form className="card quiz-shell" onSubmit={submitWaitlist}>
             <div className="waitlist-form">
               <div className="field">
@@ -719,9 +725,9 @@ export function HomePage() {
               </div>
             </div>
             <div className="cta-row" style={{ marginTop: 18 }}>
-              <button className="button" type="submit">Join the waitlist</button>
+              <button className="button" type="submit">Get beta access</button>
               <span className="muted">
-                The API route is wired for future Supabase persistence, but this POC currently returns validated success only.
+                App Store and Google Play delivery are not live yet. This queue captures early download interest.
               </span>
             </div>
             {waitlistMessage ? <div className="waitlist-message">{waitlistMessage}</div> : null}
@@ -732,7 +738,7 @@ export function HomePage() {
       <footer className="footer">
         <div className="shell">
           <div className="card footer-note">
-            Sploot is positioned as guidance and coordination, not veterinary or behavioral care delivery. This proof of concept uses mock shelter data and local analytics storage until Supabase, PostHog, and partner credentials are connected.
+            Sploot is positioned as guidance and coordination, not veterinary or behavioral care delivery. The demo uses mock shelter data until live integrations are connected.
           </div>
         </div>
       </footer>

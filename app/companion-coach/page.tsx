@@ -1,8 +1,5 @@
-import { BrandPreviewPage } from "@/components/brand-preview-page";
-import { getBrandPreview } from "@/lib/brand-previews";
+import { redirect } from "next/navigation";
 
-export default function CompanionCoachPage() {
-  const preview = getBrandPreview("companion-coach");
-  if (!preview) return null;
-  return <BrandPreviewPage preview={preview} />;
+export default function CompanionCoachRedirect() {
+  redirect("/demo/companion-coach");
 }
