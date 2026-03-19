@@ -13,6 +13,8 @@ Own instrumentation design, funnel reporting, experiment readouts, and data qual
 - Event QA
 - Experiment summaries
 - Recommendations for calibration
+- Source-of-truth event spec
+- Storage destination recommendations
 
 ## Non-goals
 - Brand direction authorship
@@ -20,6 +22,11 @@ Own instrumentation design, funnel reporting, experiment readouts, and data qual
 
 ## Cadence
 Continuous event QA and weekly reporting.
+
+## Minimum Data Requirements
+- Every core event must declare its required properties and storage destination
+- Database-backed imports must capture import run status, count, and error notes
+- Beta, demo, and outbound shelter clicks must stay attributable across public and review routes
 
 ## Escalation Rules
 - Escalate if core funnel events are missing or unreliable.

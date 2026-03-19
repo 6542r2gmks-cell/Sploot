@@ -10,12 +10,12 @@ export function DemoGalleryPage() {
             <img src="/logo-infinity-corgi.jpg" alt="Sploot concept logo" />
             <div className="brand-title">
               <strong>Sploot</strong>
-              <span>Internal review hub for homepage concepts and the working demo.</span>
+              <span>Match. Care. Thrive.</span>
             </div>
           </div>
           <div className="nav-links">
-            <Link href="/">Public landing page</Link>
-            <Link href="/demo/trial">Trial app</Link>
+            <Link href="/">Home</Link>
+            <Link href="/demo/trial">Live demo</Link>
           </div>
         </div>
 
@@ -25,6 +25,7 @@ export function DemoGalleryPage() {
           This area is for internal review. It lets your team compare homepage concepts without
           treating the design review itself as the public product.
         </p>
+        <p className="concept-support-line">Each route keeps the same product promise and changes the visual language around it.</p>
       </section>
 
       <section className="section">
@@ -45,7 +46,7 @@ export function DemoGalleryPage() {
                     marginBottom: 18,
                   }}
                 />
-                <span className="route-badge">{preview.tagline}</span>
+                <span className="route-badge">{preview.conceptTagline}</span>
                 <h3>{preview.name}</h3>
                 <p>{preview.heroBody}</p>
                 <div className="cta-row">

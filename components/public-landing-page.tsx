@@ -49,13 +49,13 @@ export function PublicLandingPage() {
             <img src="/logo-infinity-corgi.jpg" alt="Sploot primary logo" />
             <div className="brand-title">
               <strong>Sploot</strong>
-              <span>Find the dog. Learn the relationship.</span>
+              <span>Match. Care. Thrive.</span>
             </div>
           </div>
           <div className="nav-links">
-            <a href="#beta">Beta access</a>
             <a href="#how-it-works">How it works</a>
-            <Link href="/demo">Demo hub</Link>
+            <a href="#beta">Beta access</a>
+            <Link href="/demo">See concepts</Link>
           </div>
         </div>
 
@@ -67,10 +67,11 @@ export function PublicLandingPage() {
               Sploot screens readiness before it recommends dogs, then stays with owners through
               the most fragile part of adoption. Better fits. Clearer expectations. Stronger outcomes.
             </p>
+            <p className="concept-support-line">Find the dog. Learn the relationship.</p>
             <div className="cta-row">
               <a className="button" href="#beta">{primaryCta}</a>
               <Link className="ghost-button" href="/demo/trial">
-                Watch the live demo
+                See how Sploot works
               </Link>
             </div>
             <div className="metric-strip">
@@ -108,7 +109,7 @@ export function PublicLandingPage() {
                 <div className="stack-item">
                   <strong>Launch posture</strong>
                   <p className="muted" style={{ margin: "8px 0 0" }}>
-                    The public page is download-first. Demo and concept review stay available under the separate `/demo` namespace.
+                    The public page stays focused on adoption readiness and beta access. Concept comparison and prototype review live under the separate `/demo` namespace.
                   </p>
                 </div>
               </div>

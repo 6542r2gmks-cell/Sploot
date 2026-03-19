@@ -92,9 +92,14 @@ export type AgentBrief = {
 };
 
 export type AgentHandoff = {
+  status: "planned" | "in-progress" | "blocked" | "done";
+  priority: "low" | "medium" | "high";
+  dueDate?: string;
   objective: string;
   decision: string;
   evidence: string[];
+  assumptions: string[];
+  artifactLinks: string[];
   nextOwner: string;
   blockers: string[];
 };

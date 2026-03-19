@@ -1,5 +1,8 @@
 import { HomePage } from "@/components/home-page";
+import { getFeaturedDogs } from "@/lib/server/shelter-pets";
 
-export default function DemoTrialPage() {
-  return <HomePage mode="demo" />;
+export default async function DemoTrialPage() {
+  const liveDogs = await getFeaturedDogs();
+
+  return <HomePage mode="demo" initialDogs={liveDogs} />;
 }

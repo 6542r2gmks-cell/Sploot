@@ -3,7 +3,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import Link from "next/link";
 import { trackEvent } from "@/lib/analytics";
-import { defaultQuizResponse, dogs, researchSignals } from "@/lib/data";
+import { defaultQuizResponse, dogs as fallbackDogs, researchSignals } from "@/lib/data";
 import { assessReadiness, buildMatches } from "@/lib/matching";
 import { MatchCandidate, QuizResponse, ReadinessAssessment } from "@/lib/types";
 
@@ -20,7 +20,13 @@ const readinessTone = {
   "not-ready-yet": { className: "not-ready", label: "Not ready yet" },
 } as const;
 
-export function HomePage({ mode = "demo" }: { mode?: "demo" | "full" }) {
+export function HomePage({
+  mode = "demo",
+  initialDogs = fallbackDogs,
+}: {
+  mode?: "demo" | "full";
+  initialDogs?: typeof fallbackDogs;
+}) {
   const [stepIndex, setStepIndex] = useState(0);
   const [quiz, setQuiz] = useState<QuizResponse>(defaultQuizResponse);
   const [assessment, setAssessment] = useState<ReadinessAssessment | null>(null);
@@ -76,7 +82,7 @@ export function HomePage({ mode = "demo" }: { mode?: "demo" | "full" }) {
     event.preventDefault();
     trackEvent("quiz_completed", { totalFields: Object.keys(quiz).length });
     const nextAssessment = assessReadiness(quiz);
-    const nextMatches = buildMatches(quiz, nextAssessment, dogs);
+    const nextMatches = buildMatches(quiz, nextAssessment, initialDogs);
     setAssessment(nextAssessment);
     setMatches(nextMatches);
     setActiveMatchIndex(0);
@@ -125,10 +131,10 @@ export function HomePage({ mode = "demo" }: { mode?: "demo" | "full" }) {
             </div>
           </div>
           <div className="nav-links">
-            <Link href="/">Public landing page</Link>
-            <Link href="/demo">Demo hub</Link>
+            <Link href="/">Home</Link>
+            <Link href="/demo">Concepts</Link>
             <a href="#how-it-works">How it works</a>
-            <a href="#quiz">Quiz POC</a>
+            <a href="#quiz">Start demo</a>
             <a href="#waitlist">Early access</a>
           </div>
         </div>
@@ -142,6 +148,7 @@ export function HomePage({ mode = "demo" }: { mode?: "demo" | "full" }) {
               curates dog matches with visible fit logic, and stays with owners through
               the first 30, 90, and 365 days after adoption.
             </p>
+            <p className="concept-support-line">Find the dog. Learn the relationship.</p>
             <div className="cta-row">
               <a className="button" href="#quiz">Start the readiness quiz</a>
               <a className="ghost-button" href="#waitlist">Get mobile beta access</a>
@@ -210,8 +217,8 @@ export function HomePage({ mode = "demo" }: { mode?: "demo" | "full" }) {
 
       <section className="section" id="quiz">
         <div className="shell">
-          <span className="eyebrow">Quiz + Matching POC</span>
-          <h2 className="section-title">A functional flow with soft-gating and fit logic.</h2>
+          <span className="eyebrow">Guided demo</span>
+          <h2 className="section-title">See how Sploot screens, curates, and supports.</h2>
           <p className="subhead">
             This version keeps the matching engine transparent. It is not trying to simulate certainty; it is trying to reduce obvious preventable mismatch.
           </p>
@@ -653,8 +660,8 @@ export function HomePage({ mode = "demo" }: { mode?: "demo" | "full" }) {
       {mode === "full" ? (
         <section className="section" id="agents">
           <div className="shell">
-            <span className="eyebrow">Internal agent setup</span>
-            <h2 className="section-title">Six operating agents now, product-facing AI later.</h2>
+            <span className="eyebrow">Operating system</span>
+            <h2 className="section-title">Six working agents keep the product, brand, and analytics aligned.</h2>
             <div className="agent-grid" style={{ marginTop: 28 }}>
               <div className="card tile">
                 <h3>Brand Management</h3>
